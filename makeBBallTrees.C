@@ -188,6 +188,8 @@ int makeBBallTrees(const std::string fList, const std::string fList2)
 	      std::size_t breakIndex = outVal.find(findBreak.c_str());
 	    
 	      std::cout << "first section: " << outVal.substr(0, breakIndex) << std::endl;
+	     
+	      Int_t counter2 = 0; 
 
 	      const std::string findBreak2 = ",";
 	      std::size_t breakIndex2 = outVal.find(findBreak2.c_str());
@@ -201,11 +203,45 @@ int makeBBallTrees(const std::string fList, const std::string fList2)
 		  if(isHome_[iter]) ptForQuar_[iter][tempPeriod] = std::atoi(outVal.substr(0, breakIndex2).c_str());
 		  else ptVsQuar_[iter][tempPeriod] = std::atoi(outVal.substr(0, breakIndex2).c_str());
 		}
-		else if(counter == 2){
+		else if(counter == 2 && !isHome_[iter]){
 		  std::cout << "Counter " << counter << ": " << outVal << std::endl;
+		  if(counter2 == 0) minutes_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 1) fgMake_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 2) fgAttempt_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 4) threeMake_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 5) threeAttempt_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 7) ftMake_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 8) ftAttempt_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 10) offReb_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 11) defReb_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 12) totReb_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 13) ast_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 14) stl_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 15) blk_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 16) tov_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 17) fouls_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+
+		  counter2++;
 		}
-		else if (counter == 3){
+		else if (counter == 3 && isHome_[iter]){
 		  std::cout << "Counter " << counter << ": " << outVal << std::endl;
+		  if(counter2 == 0) minutes_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 1) fgMake_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 2) fgAttempt_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 4) threeMake_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 5) threeAttempt_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 7) ftMake_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 8) ftAttempt_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 10) offReb_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 11) defReb_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 12) totReb_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 13) ast_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 14) stl_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 15) blk_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 16) tov_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		  else if(counter2 == 17) fouls_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+
+		  counter2++;
 		}
 
 		tempPeriod++;
@@ -213,6 +249,12 @@ int makeBBallTrees(const std::string fList, const std::string fList2)
 		breakIndex = outVal.find(findBreak.c_str());
 		breakIndex2 = outVal.find(findBreak2.c_str());
 		std::cout << "breakIndices: " << breakIndex << ", " << breakIndex2 << std::endl;
+
+		if(breakIndex == breakIndex2){
+		  std::cout << "YOLO" << std::endl;
+		  std::cout << outVal << std::endl;
+		  //		  else if(counter == 3 && isHome_[iter] && counter2 == 17) fouls_[iter] = std::atoi(outVal.substr(0, breakIndex2).c_str());
+		}
 	      }
 
 	      if(counter == 0) nPeriod_[iter] = tempPeriod;
