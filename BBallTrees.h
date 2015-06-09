@@ -52,43 +52,62 @@ Int_t ptVsQuar_[maxGames][maxPeriod];
 Int_t minutes_[maxGames];
 
 Int_t fgMake_[maxGames];
-Float_t fgMakePer_[maxGames];
 Int_t fgAttempt_[maxGames];
-Float_t fgAttemptPer_[maxGames];
 Float_t fgPerc_[maxGames];
-Float_t fgPercPer_[maxGames];
-
 Int_t threeMake_[maxGames];
-Float_t threeMakePer_[maxGames];
 Int_t threeAttempt_[maxGames];
-Float_t threeAttemptPer_[maxGames];
 Float_t threePerc_[maxGames];
-Float_t threePercPer_[maxGames];
-
 Int_t ftMake_[maxGames];
-Float_t ftMakePer_[maxGames];
 Int_t ftAttempt_[maxGames];
-Float_t ftAttemptPer_[maxGames];
 Float_t ftPerc_[maxGames];
-Float_t ftPercPer_[maxGames];
 
 Int_t offReb_[maxGames];
-Float_t offRebPer_[maxGames];
 Int_t defReb_[maxGames];
-Float_t defRebPer_[maxGames];
 Int_t totReb_[maxGames];
-Float_t totRebPer_[maxGames];
-
 Int_t ast_[maxGames];
-Float_t astPer_[maxGames];
 Int_t stl_[maxGames];
-Float_t stlPer_[maxGames];
 Int_t blk_[maxGames];
-Float_t blkPer_[maxGames];
 Int_t tov_[maxGames];
-Float_t tovPer_[maxGames];
 Int_t fouls_[maxGames];
+
+Float_t fgMakePer_[maxGames];
+Float_t fgAttemptPer_[maxGames];
+Float_t fgPercPer_[maxGames];
+Float_t threeMakePer_[maxGames];
+Float_t threeAttemptPer_[maxGames];
+Float_t threePercPer_[maxGames];
+Float_t ftMakePer_[maxGames];
+Float_t ftAttemptPer_[maxGames];
+Float_t ftPercPer_[maxGames];
+
+Float_t offRebPer_[maxGames];
+Float_t defRebPer_[maxGames];
+Float_t totRebPer_[maxGames];
+Float_t astPer_[maxGames];
+Float_t stlPer_[maxGames];
+Float_t blkPer_[maxGames];
+Float_t tovPer_[maxGames];
 Float_t foulsPer_[maxGames];
+
+Float_t fgMakePerErr_[maxGames];
+Float_t fgAttemptPerErr_[maxGames];
+Float_t fgPercPerErr_[maxGames];
+Float_t threeMakePerErr_[maxGames];
+Float_t threeAttemptPerErr_[maxGames];
+Float_t threePercPerErr_[maxGames];
+Float_t ftMakePerErr_[maxGames];
+Float_t ftAttemptPerErr_[maxGames];
+Float_t ftPercPerErr_[maxGames];
+
+Float_t offRebPerErr_[maxGames];
+Float_t defRebPerErr_[maxGames];
+Float_t totRebPerErr_[maxGames];
+Float_t astPerErr_[maxGames];
+Float_t stlPerErr_[maxGames];
+Float_t blkPerErr_[maxGames];
+Float_t tovPerErr_[maxGames];
+Float_t foulsPerErr_[maxGames];
+
 
 void SetBBallBranches(Bool_t fullSet);
 void OffBBallBranches();
@@ -138,43 +157,61 @@ void SetBBallBranches(Bool_t fullSet)
     statTree_p->Branch("minutes", minutes_, "minutes[nGames]/I");
 
     statTree_p->Branch("fgMake", fgMake_, "fgMake[nGames]/I");
-    statTree_p->Branch("fgMakePer", fgMakePer_, "fgMakePer[nGames]/F");
     statTree_p->Branch("fgAttempt", fgAttempt_, "fgAttempt[nGames]/I");
-    statTree_p->Branch("fgAttemptPer", fgAttemptPer_, "fgAttemptPer[nGames]/F");
     statTree_p->Branch("fgPerc", fgPerc_, "fgPerc[nGames]/F");
-    statTree_p->Branch("fgPercPer", fgPercPer_, "fgPercPer[nGames]/F");
-
     statTree_p->Branch("threeMake", threeMake_, "threeMake[nGames]/I");
-    statTree_p->Branch("threeMakePer", threeMakePer_, "threeMakePer[nGames]/F");
     statTree_p->Branch("threeAttempt", threeAttempt_, "threeAttempt[nGames]/I");
-    statTree_p->Branch("threeAttemptPer", threeAttemptPer_, "threeAttemptPer[nGames]/F");
     statTree_p->Branch("threePerc", threePerc_, "threePerc[nGames]/F");
-    statTree_p->Branch("threePercPer", threePercPer_, "threePercPer[nGames]/F");
-
     statTree_p->Branch("ftMake", ftMake_, "ftMake[nGames]/I");
-    statTree_p->Branch("ftMakePer", ftMakePer_, "ftMakePer[nGames]/F");
     statTree_p->Branch("ftAttempt", ftAttempt_, "ftAttempt[nGames]/I");
-    statTree_p->Branch("ftAttemptPer", ftAttemptPer_, "ftAttemptPer[nGames]/F");
     statTree_p->Branch("ftPerc", ftPerc_, "ftPerc[nGames]/F");
-    statTree_p->Branch("ftPercPer", ftPercPer_, "ftPercPer[nGames]/F");
 
     statTree_p->Branch("offReb", offReb_, "offReb[nGames]/I");
-    statTree_p->Branch("offRebPer", offRebPer_, "offRebPer[nGames]/F");
     statTree_p->Branch("defReb", defReb_, "defReb[nGames]/I");
-    statTree_p->Branch("defRebPer", defRebPer_, "defRebPer[nGames]/F");
     statTree_p->Branch("totReb", totReb_, "totReb[nGames]/I");
-    statTree_p->Branch("totRebPer", totRebPer_, "totRebPer[nGames]/F");
-
     statTree_p->Branch("ast", ast_, "ast[nGames]/I");
-    statTree_p->Branch("astPer", astPer_, "astPer[nGames]/F");
     statTree_p->Branch("stl", stl_, "stl[nGames]/I");
-    statTree_p->Branch("stlPer", stlPer_, "stlPer[nGames]/F");
     statTree_p->Branch("blk", blk_, "blk[nGames]/I");
-    statTree_p->Branch("blkPer", blkPer_, "blkPer[nGames]/F");
     statTree_p->Branch("tov", tov_, "tov[nGames]/I");
-    statTree_p->Branch("tovPer", tovPer_, "tovPer[nGames]/F");
     statTree_p->Branch("fouls", fouls_, "fouls[nGames]/I");
+
+    statTree_p->Branch("fgMakePer", fgMakePer_, "fgMakePer[nGames]/F");
+    statTree_p->Branch("fgAttemptPer", fgAttemptPer_, "fgAttemptPer[nGames]/F");
+    statTree_p->Branch("fgPercPer", fgPercPer_, "fgPercPer[nGames]/F");
+    statTree_p->Branch("threeMakePer", threeMakePer_, "threeMakePer[nGames]/F");
+    statTree_p->Branch("threeAttemptPer", threeAttemptPer_, "threeAttemptPer[nGames]/F");
+    statTree_p->Branch("threePercPer", threePercPer_, "threePercPer[nGames]/F");
+    statTree_p->Branch("ftMakePer", ftMakePer_, "ftMakePer[nGames]/F");
+    statTree_p->Branch("ftAttemptPer", ftAttemptPer_, "ftAttemptPer[nGames]/F");
+    statTree_p->Branch("ftPercPer", ftPercPer_, "ftPercPer[nGames]/F");
+
+    statTree_p->Branch("offRebPer", offRebPer_, "offRebPer[nGames]/F");
+    statTree_p->Branch("defRebPer", defRebPer_, "defRebPer[nGames]/F");
+    statTree_p->Branch("totRebPer", totRebPer_, "totRebPer[nGames]/F");
+    statTree_p->Branch("astPer", astPer_, "astPer[nGames]/F");
+    statTree_p->Branch("stlPer", stlPer_, "stlPer[nGames]/F");
+    statTree_p->Branch("blkPer", blkPer_, "blkPer[nGames]/F");
+    statTree_p->Branch("tovPer", tovPer_, "tovPer[nGames]/F");
     statTree_p->Branch("foulsPer", foulsPer_, "foulsPer[nGames]/F");
+
+    statTree_p->Branch("fgMakePerErr", fgMakePerErr_, "fgMakePerErr[nGames]/F");
+    statTree_p->Branch("fgAttemptPerErr", fgAttemptPerErr_, "fgAttemptPerErr[nGames]/F");
+    statTree_p->Branch("fgPercPerErr", fgPercPerErr_, "fgPercPerErr[nGames]/F");
+    statTree_p->Branch("threeMakePerErr", threeMakePerErr_, "threeMakePerErr[nGames]/F");
+    statTree_p->Branch("threeAttemptPerErr", threeAttemptPerErr_, "threeAttemptPerErr[nGames]/F");
+    statTree_p->Branch("threePercPerErr", threePercPerErr_, "threePercPerErr[nGames]/F");
+    statTree_p->Branch("ftMakePerErr", ftMakePerErr_, "ftMakePerErr[nGames]/F");
+    statTree_p->Branch("ftAttemptPerErr", ftAttemptPerErr_, "ftAttemptPerErr[nGames]/F");
+    statTree_p->Branch("ftPercPerErr", ftPercPerErr_, "ftPercPerErr[nGames]/F");
+
+    statTree_p->Branch("offRebPerErr", offRebPerErr_, "offRebPerErr[nGames]/F");
+    statTree_p->Branch("defRebPerErr", defRebPerErr_, "defRebPerErr[nGames]/F");
+    statTree_p->Branch("totRebPerErr", totRebPerErr_, "totRebPerErr[nGames]/F");
+    statTree_p->Branch("astPerErr", astPerErr_, "astPerErr[nGames]/F");
+    statTree_p->Branch("stlPerErr", stlPerErr_, "stlPerErr[nGames]/F");
+    statTree_p->Branch("blkPerErr", blkPerErr_, "blkPerErr[nGames]/F");
+    statTree_p->Branch("tovPerErr", tovPerErr_, "tovPerErr[nGames]/F");
+    statTree_p->Branch("foulsPerErr", foulsPerErr_, "foulsPerErr[nGames]/F");
   }
 
   std::cout << "Setting book tree branches..." << std::endl;
@@ -230,43 +267,61 @@ void GetBBallBranches(Bool_t fullSet)
     statTree_p->SetBranchAddress("minutes", minutes_);
 
     statTree_p->SetBranchAddress("fgMake", fgMake_);
-    statTree_p->SetBranchAddress("fgMakePer", fgMakePer_);
     statTree_p->SetBranchAddress("fgAttempt", fgAttempt_);
-    statTree_p->SetBranchAddress("fgAttemptPer", fgAttemptPer_);
     statTree_p->SetBranchAddress("fgPerc", fgPerc_);
-    statTree_p->SetBranchAddress("fgPercPer", fgPercPer_);
-
     statTree_p->SetBranchAddress("threeMake", threeMake_);
-    statTree_p->SetBranchAddress("threeMakePer", threeMakePer_);
     statTree_p->SetBranchAddress("threeAttempt", threeAttempt_);
-    statTree_p->SetBranchAddress("threeAttemptPer", threeAttemptPer_);
     statTree_p->SetBranchAddress("threePerc", threePerc_);
-    statTree_p->SetBranchAddress("threePercPer", threePercPer_);
-
     statTree_p->SetBranchAddress("ftMake", ftMake_);
-    statTree_p->SetBranchAddress("ftMakePer", ftMakePer_);
     statTree_p->SetBranchAddress("ftAttempt", ftAttempt_);
-    statTree_p->SetBranchAddress("ftAttemptPer", ftAttemptPer_);
     statTree_p->SetBranchAddress("ftPerc", ftPerc_);
-    statTree_p->SetBranchAddress("ftPercPer", ftPercPer_);
 
     statTree_p->SetBranchAddress("offReb", offReb_);
-    statTree_p->SetBranchAddress("offRebPer", offRebPer_);
     statTree_p->SetBranchAddress("defReb", defReb_);
-    statTree_p->SetBranchAddress("defRebPer", defRebPer_);
     statTree_p->SetBranchAddress("totReb", totReb_);
-    statTree_p->SetBranchAddress("totRebPer", totRebPer_);
-
     statTree_p->SetBranchAddress("ast", ast_);
-    statTree_p->SetBranchAddress("astPer", astPer_);
     statTree_p->SetBranchAddress("stl", stl_);
-    statTree_p->SetBranchAddress("stlPer", stlPer_);
     statTree_p->SetBranchAddress("blk", blk_);
-    statTree_p->SetBranchAddress("blkPer", blkPer_);
     statTree_p->SetBranchAddress("tov", tov_);
-    statTree_p->SetBranchAddress("tovPer", tovPer_);
     statTree_p->SetBranchAddress("fouls", fouls_);
+
+    statTree_p->SetBranchAddress("fgMakePer", fgMakePer_);
+    statTree_p->SetBranchAddress("fgAttemptPer", fgAttemptPer_);
+    statTree_p->SetBranchAddress("fgPercPer", fgPercPer_);
+    statTree_p->SetBranchAddress("threeMakePer", threeMakePer_);
+    statTree_p->SetBranchAddress("threeAttemptPer", threeAttemptPer_);
+    statTree_p->SetBranchAddress("threePercPer", threePercPer_);
+    statTree_p->SetBranchAddress("ftMakePer", ftMakePer_);
+    statTree_p->SetBranchAddress("ftAttemptPer", ftAttemptPer_);
+    statTree_p->SetBranchAddress("ftPercPer", ftPercPer_);
+
+    statTree_p->SetBranchAddress("offRebPer", offRebPer_);
+    statTree_p->SetBranchAddress("defRebPer", defRebPer_);
+    statTree_p->SetBranchAddress("totRebPer", totRebPer_);
+    statTree_p->SetBranchAddress("astPer", astPer_);
+    statTree_p->SetBranchAddress("stlPer", stlPer_);
+    statTree_p->SetBranchAddress("blkPer", blkPer_);
+    statTree_p->SetBranchAddress("tovPer", tovPer_);
     statTree_p->SetBranchAddress("foulsPer", foulsPer_);
+
+    statTree_p->SetBranchAddress("fgMakePerErr", fgMakePerErr_);
+    statTree_p->SetBranchAddress("fgAttemptPerErr", fgAttemptPerErr_);
+    statTree_p->SetBranchAddress("fgPercPerErr", fgPercPerErr_);
+    statTree_p->SetBranchAddress("threeMakePerErr", threeMakePerErr_);
+    statTree_p->SetBranchAddress("threeAttemptPerErr", threeAttemptPerErr_);
+    statTree_p->SetBranchAddress("threePercPerErr", threePercPerErr_);
+    statTree_p->SetBranchAddress("ftMakePerErr", ftMakePerErr_);
+    statTree_p->SetBranchAddress("ftAttemptPerErr", ftAttemptPerErr_);
+    statTree_p->SetBranchAddress("ftPercPerErr", ftPercPerErr_);
+
+    statTree_p->SetBranchAddress("offRebPerErr", offRebPerErr_);
+    statTree_p->SetBranchAddress("defRebPerErr", defRebPerErr_);
+    statTree_p->SetBranchAddress("totRebPerErr", totRebPerErr_);
+    statTree_p->SetBranchAddress("astPerErr", astPerErr_);
+    statTree_p->SetBranchAddress("stlPerErr", stlPerErr_);
+    statTree_p->SetBranchAddress("blkPerErr", blkPerErr_);
+    statTree_p->SetBranchAddress("tovPerErr", tovPerErr_);
+    statTree_p->SetBranchAddress("foulsPerErr", foulsPerErr_);
   }
 
   std::cout << "Getting book tree branches..." << std::endl;
